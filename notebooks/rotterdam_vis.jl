@@ -157,6 +157,7 @@ end
 # ╔═╡ 822dbc31-8c7a-460c-bf07-0c2d0a30f8bd
 md"""
 ## Plot csv points vs label image
+Double check that nothing got lost in translation by plotting the CSV centerlines (blue) and the label.nii file where label.nii == 1.0 (red)
 """
 
 # ╔═╡ 3432d8a2-4dac-4c5d-b111-882cc976f77d
@@ -169,7 +170,7 @@ cartesian_pts = findall(x -> x == 1.0, label_raw);
 Plots.scatter(centerline1[:,1], centerline1[:,2], centerline1[:,3], markersize=2)
 
 # ╔═╡ 5e54c1ac-ac92-4229-8db6-97158e37dd8d
-Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex.(cartesian_pts, 3), markersize=2)
+Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex.(cartesian_pts, 3), color="red", markersize=2)
 
 # ╔═╡ e7edf7d3-f20c-4197-aa81-3ae87de7fb20
 # begin
