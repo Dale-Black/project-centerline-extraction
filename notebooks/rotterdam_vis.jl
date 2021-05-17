@@ -27,6 +27,8 @@ begin
 		Pkg.add("NIfTI")
 		Pkg.add("PlotlyJS")
 		Pkg.add("Plots")
+		Pkg.add("CSV")
+		Pkg.add("DataFrames")
 	end
 	
 	# Import packages
@@ -34,15 +36,13 @@ begin
 	using NIfTI
 	using PlotlyJS
 	using Plots
+	import CSV, DataFrames
 end
 
 # ╔═╡ 2c7269ee-4b2c-47c9-86ef-b28ffbbc86ab
 md"""
 ## Set up
 """
-
-# ╔═╡ 137df9f6-3452-4941-b056-73a17fac2f36
-import CSV, DataFrames
 
 # ╔═╡ 4501e0c4-bbd5-4e3c-9a29-062176af7f92
 plotlyjs()
@@ -56,13 +56,13 @@ md"""
 """
 
 # ╔═╡ ca349927-6f00-4ea0-9b43-b2b716f1f0ab
-image_filepath = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP-1/NeptuneData/Datasets/Rotterdam_new/training/dataset00/image00.nii";
+image_filepath = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/image00.nii";
 
 # ╔═╡ 4bc46e5a-1251-4b52-b956-68681ef707ab
-label_filepath = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP-1/NeptuneData/Datasets/Rotterdam_new/training/dataset00/label.nii";
+label_filepath = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/label.nii";
 
 # ╔═╡ ead8952b-38b0-45a7-80bf-a77419163516
-pt0_path = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP-1/NeptuneData/Datasets/Rotterdam_new/training/dataset00/vessel0/reference_voxel.csv";
+pt0_path = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/vessel0/reference_voxel.csv";
 
 # ╔═╡ 44ae1342-3ca9-4725-8705-7806daa896a1
 md"""
@@ -183,7 +183,6 @@ Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex
 # ╔═╡ Cell order:
 # ╟─2c7269ee-4b2c-47c9-86ef-b28ffbbc86ab
 # ╠═71a1c8ac-b1bf-11eb-2dff-d991c8ba6387
-# ╠═137df9f6-3452-4941-b056-73a17fac2f36
 # ╠═4501e0c4-bbd5-4e3c-9a29-062176af7f92
 # ╠═77f7946d-f5c5-4850-9880-f00dae3269f0
 # ╟─20786a05-b378-4766-9b14-c838bc995ad4
@@ -209,7 +208,7 @@ Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex
 # ╟─ea5cadd5-6163-47ea-adef-b6e6a97c22c1
 # ╠═e04f8de0-8541-465b-8255-be20bcad7afb
 # ╠═22b1723a-436f-4783-84dd-dd2406bd753c
-# ╟─9fd75a46-7cd3-4273-b521-47befd4bf736
+# ╠═9fd75a46-7cd3-4273-b521-47befd4bf736
 # ╠═f4067d5c-9086-44f8-b2a3-8745545a2861
 # ╟─822dbc31-8c7a-460c-bf07-0c2d0a30f8bd
 # ╠═3432d8a2-4dac-4c5d-b111-882cc976f77d
