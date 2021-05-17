@@ -150,8 +150,8 @@ indices = findall(x -> x == zs[b], centerline1[:,3])
 
 # ╔═╡ f4067d5c-9086-44f8-b2a3-8745545a2861
 begin
-	plt2 = Plots.scatter(centerline1[:,1][indices], centerline1[:,2][indices], color="blue", markersize=2)
-	heatmap!(plt2, transpose(img_raw[:,:,zs[b]]), alpha=0.5, color=:grays)
+	plt2a = Plots.scatter(centerline1[:,1][indices], centerline1[:,2][indices], color="blue", markersize=2)
+	heatmap!(plt2a, transpose(img_raw[:,:,zs[b]]), alpha=0.5, color=:grays)
 end
 
 # ╔═╡ 822dbc31-8c7a-460c-bf07-0c2d0a30f8bd
@@ -172,13 +172,52 @@ Plots.scatter(centerline1[:,1], centerline1[:,2], centerline1[:,3], markersize=2
 # ╔═╡ 5e54c1ac-ac92-4229-8db6-97158e37dd8d
 Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex.(cartesian_pts, 3), color="red", markersize=2)
 
-# ╔═╡ e7edf7d3-f20c-4197-aa81-3ae87de7fb20
-# begin
-# 	binary_array = zeros(size(img_raw))
-# 	for (x,y,z) in eachrow(centerline1)
-# 		binary_array[x,y,z] = 1
-# 	end
-# end
+# ╔═╡ 18344d8b-fc72-4513-b499-4f4b528a3164
+md"""
+## Plot all 4 centerlines
+"""
+
+# ╔═╡ 42414e2e-60c2-4089-9650-7e3b1eacadfb
+pt1_path = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/vessel1/reference_voxel.csv";
+
+# ╔═╡ c8e6549f-53b1-46ed-97b1-2082631de4a5
+pt2_path = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/vessel2/reference_voxel.csv";
+
+# ╔═╡ 61854352-c086-4a88-8a2a-8aad1d2ca821
+pt3_path = "/Users/daleblack/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Volumes/128.200.49.44 – FTP/NeptuneData/Datasets/Rotterdam_new/training/dataset00/vessel3/reference_voxel.csv";
+
+# ╔═╡ 06b805ac-6af3-4571-801d-8e2ea2b2f62d
+begin
+	df1 = DataFrames.DataFrame(CSV.File(pt1_path))
+	df1[!, :X] = convert.(Int, df1[:, :X])
+	df1[!, :Y] = convert.(Int, df1[:, :Y])
+	df1[!, :Z] = convert.(Int, df1[:, :Z])
+	
+	df2 = DataFrames.DataFrame(CSV.File(pt2_path))
+	df2[!, :X] = convert.(Int, df2[:, :X])
+	df2[!, :Y] = convert.(Int, df2[:, :Y])
+	df2[!, :Z] = convert.(Int, df2[:, :Z])
+	
+	df3 = DataFrames.DataFrame(CSV.File(pt3_path))
+	df3[!, :X] = convert.(Int, df3[:, :X])
+	df3[!, :Y] = convert.(Int, df3[:, :Y])
+	df3[!, :Z] = convert.(Int, df3[:, :Z])
+end;
+
+# ╔═╡ 601b5b37-2be2-4107-8727-2f7d488126c0
+begin
+	centerline2 = convert(Array, df1[:, 2:4]);
+	centerline3 = convert(Array, df2[:, 2:4]);
+	centerline4 = convert(Array, df3[:, 2:4]);
+end;
+
+# ╔═╡ a755bf47-3a6b-4312-accf-cec1ad268348
+begin
+	Plots.scatter(centerline1[:,1], centerline1[:,2], centerline1[:,3], markersize=1)
+	Plots.scatter!(centerline2[:,1], centerline2[:,2], centerline2[:,3], markersize=1)
+	Plots.scatter!(centerline3[:,1], centerline3[:,2], centerline3[:,3], markersize=1)
+	Plots.scatter!(centerline4[:,1], centerline4[:,2], centerline4[:,3], markersize=1)
+end
 
 # ╔═╡ Cell order:
 # ╟─2c7269ee-4b2c-47c9-86ef-b28ffbbc86ab
@@ -215,4 +254,10 @@ Plots.scatter(getindex.(cartesian_pts, 1), getindex.(cartesian_pts, 2), getindex
 # ╠═c8735694-a99e-44b5-8515-953fbbba8559
 # ╠═7b8300f8-d778-487f-a55a-ef6e6a0b8769
 # ╠═5e54c1ac-ac92-4229-8db6-97158e37dd8d
-# ╠═e7edf7d3-f20c-4197-aa81-3ae87de7fb20
+# ╟─18344d8b-fc72-4513-b499-4f4b528a3164
+# ╠═42414e2e-60c2-4089-9650-7e3b1eacadfb
+# ╠═c8e6549f-53b1-46ed-97b1-2082631de4a5
+# ╠═61854352-c086-4a88-8a2a-8aad1d2ca821
+# ╠═06b805ac-6af3-4571-801d-8e2ea2b2f62d
+# ╠═601b5b37-2be2-4107-8727-2f7d488126c0
+# ╠═a755bf47-3a6b-4312-accf-cec1ad268348
