@@ -4,7 +4,7 @@
   * ~~Convert .raw/.mhd images to .nii images~~
   * ~~Convert centerline coordinates to binary .nii images~~
   * ~~Set up training directory like MSD dataset~~
-- [ ] Set up Pluto notebook for training using distance transforms
+- [ ] Set up Pluto notebook for training with distance transforms
   * ~~Prepare Rotterdam data for training~~
   * Use [this notebook](https://github.com/Dale-Black/MedicalTutorials.jl/blob/master/src/3D_Segmentation/Heart/explicit_heart.jl) from [MedicalTutorials.jl](https://github.com/Dale-Black/MedicalTutorials.jl) as a starting point and use the same MSD heart dataset first, since it's public and easy to work with
     * The notebook above uses the modified data loading steps that Zhijian implemented, so this will (should) load both the public MSD dataset and the Rotterdam dataset in the same way
